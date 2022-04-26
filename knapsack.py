@@ -10,7 +10,8 @@ class Knapsack:
         B = [[0 for i in range(self.capacity + 1)] for j in range(self.number)]
         for k in range(self.number):
             for y in reversed(range(self.capacity + 1)):
-                if self.weights[k] <= y and A[y] < A[y - self.weights[k]] + self.profits[k]:
+                if self.weights[k] <= y \
+                        and A[y] < A[y - self.weights[k]] + self.profits[k]:
                     A[y] = A[y - self.weights[k]] + self.profits[k]
                     B[k][y] = 1
                 else:

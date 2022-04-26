@@ -1,4 +1,5 @@
 import unittest
+import time
 from ortools.algorithms import pywrapknapsack_solver
 unittest.TestLoader.sortTestMethodsUsing = None
 
@@ -7,6 +8,13 @@ class ParametrizedTestKnapsack(unittest.TestCase):
     def __init__(self, methodName='runTest', param=None):
         super(ParametrizedTestKnapsack, self).__init__(methodName)
         self.knapsack = param
+
+    def setUp(self):
+        self.startTime = time.time()
+
+    def tearDown(self):
+        t = time.time() - self.startTime
+        print('%s: %.10f' % (self.id(), t))
 
     @staticmethod
     def parametrize(testcase_klass, param=None):
